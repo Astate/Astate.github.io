@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Astate Blog</title>
+    <link>https://astate.github.io/</link>
+    <description>Recent content on Astate Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>zacharieroy@gmail.com (zacharie roy)</managingEditor>
+    <webMaster>zacharieroy@gmail.com (zacharie roy)</webMaster>
+    <lastBuildDate>Wed, 23 Jan 2019 21:09:16 -0500</lastBuildDate>
+    
+	<atom:link href="https://astate.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Premier post sur le blog</title>
+      <link>https://astate.github.io/post/first-blog/</link>
+      <pubDate>Wed, 23 Jan 2019 21:09:16 -0500</pubDate>
+      <author>zacharieroy@gmail.com (zacharie roy)</author>
+      <guid>https://astate.github.io/post/first-blog/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
