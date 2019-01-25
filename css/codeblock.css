@@ -9,7 +9,10 @@ pre code.hljs {
 }
 
 .highlight tr, .highlight pre {
-  border: none;
+  /* --- border:none --- */
+  border-left-style: solid;
+  border-left-color: #0071a6;
+  border-left-width: 6px;
 }
 
 .highlight div:first-child {
