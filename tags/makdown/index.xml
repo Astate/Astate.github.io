@@ -1,17 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Makdown on Astate</title>
+    <title>makdown on Astate</title>
     <link>https://astate.github.io/tags/makdown/</link>
-    <description>Recent content in Makdown on Astate</description>
+    <description>Recent content in makdown on Astate</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>astate@protonmail.com (Astate)</managingEditor>
     <webMaster>astate@protonmail.com (Astate)</webMaster>
-    <lastBuildDate>Fri, 25 Jan 2019 10:18:03 -0500</lastBuildDate>
-    
-	<atom:link href="https://astate.github.io/tags/makdown/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 25 Jan 2019 10:18:03 -0500</lastBuildDate><atom:link href="https://astate.github.io/tags/makdown/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Decouverte De Markdown</title>
       <link>https://astate.github.io/post/decouverte-de-markdown/</link>
