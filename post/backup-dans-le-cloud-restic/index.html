@@ -59,7 +59,7 @@
   "headline": "Backup Dans le cloud avec restic",
   "description" : "Mon ordinateur se trouvais ralentie par mon système de backup. j\u0026rsquo;avais aussi un mount réseau qui ne fonctionnait pas toujours parce que j\u0026rsquo;avais un disque dur externe de défectueux. Je me suis alors rendu à l\u0026rsquo;évidance qu\u0026rsquo;il falait que je trouve une nouvelle façon d\u0026rsquo;effectuer mes backups. Après plusieurs recherche j\u0026rsquo;ai finalement trouvé une stratégie de backup qui me convient parfaitement. Cette solution est restic parce quel correspondait à tout les critères que je m\u0026rsquo;étais donnés.",
   "inLanguage" : "fr",
-  "wordCount":  644 ,
+  "wordCount":  657 ,
   "datePublished" : "2021-09-29T11:12:36",
   "dateModified" : "2021-09-29T11:12:36",
   "image" : "https:\/\/astate.github.io\/img\/avatar-icon.png",
@@ -242,7 +242,7 @@
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;644&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;657&nbsp;mots
   
   
     
@@ -277,6 +277,7 @@ Cette solution est <strong>restic</strong> parce quel correspondait à tout les 
 <li>Doit être capable d&rsquo;effectuer les backups directement dans le cloud comme duplicati et rclone.</li>
 <li>Doit supporter l&rsquo;encryption</li>
 <li>Doit être léger et être utilisé directement sur le poste.</li>
+<li>Doit être intégré de base dans la majorité des distributions linux</li>
 </ul>
 <h3 id="comment-mettre-en-place">Comment mettre en place</h3>
 <p>L&rsquo;implantation c&rsquo;est en fait en quatre étapes.</p>
@@ -289,7 +290,7 @@ Cette solution est <strong>restic</strong> parce quel correspondait à tout les 
 <li>Configuration de l&rsquo;automatisme d&rsquo;exécution via systemd</li>
 </ol>
 <h4 id="1-installation-de-rclone">1. installation de rclone</h4>
-<p>Dans mes critères de choix avec opensuse</p>
+<p>L&rsquo;installation avec opensuse ce fait comme tout autre logiciel</p>
 <div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"> $ zypper install rclone</code></pre></div>
 <h4 id="2-création-dun-google-drive-client-id-pour-rclone">2. Création d&rsquo;un Google Drive Client ID pour rclone</h4>
 <p>La création d&rsquo;un identification de Google Drive qui sera utilisé seulement dans rclone se fait via la <a href="https://console.developers.google.com/">Google API Console</a></p>
