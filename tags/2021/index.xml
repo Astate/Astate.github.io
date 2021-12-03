@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>2021 on Astate</title>
-    <link>https://astate.github.io/tags/2021/</link>
+    <link>http://localhost:1313/tags/2021/</link>
     <description>Recent content in 2021 on Astate</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>astate@protonmail.com (Astate)</managingEditor>
     <webMaster>astate@protonmail.com (Astate)</webMaster>
-    <lastBuildDate>Wed, 29 Sep 2021 11:12:36 -0400</lastBuildDate><atom:link href="https://astate.github.io/tags/2021/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Sep 2021 11:12:36 -0400</lastBuildDate><atom:link href="http://localhost:1313/tags/2021/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Backup Dans le cloud avec restic</title>
-      <link>https://astate.github.io/post/backup-dans-le-cloud-restic/</link>
+      <link>http://localhost:1313/post/backup-dans-le-cloud-restic/</link>
       <pubDate>Wed, 29 Sep 2021 11:12:36 -0400</pubDate>
       <author>astate@protonmail.com (Astate)</author>
-      <guid>https://astate.github.io/post/backup-dans-le-cloud-restic/</guid>
-      <description>Mon ordinateur se trouvais ralentie par mon système de backup. j&amp;rsquo;avais aussi un mount réseau qui ne fonctionnait pas toujours parce que j&amp;rsquo;avais un disque dur externe de défectueux. Je me suis alors rendu à l&amp;rsquo;évidance qu&amp;rsquo;il falait que je trouve une nouvelle façon d&amp;rsquo;effectuer mes backups. Après plusieurs recherche j&amp;rsquo;ai finalement trouvé une stratégie de backup qui me convient parfaitement. Cette solution est restic parce quel correspondait à tout les critères que je m&amp;rsquo;étais donnés.</description>
+      <guid>http://localhost:1313/post/backup-dans-le-cloud-restic/</guid>
+      <description>Mon ordinateur se trouvait ralentie par mon système de backup. j&amp;rsquo;avais aussi un mount réseau qui ne fonctionnait pas toujours parce que j&amp;rsquo;avais un disque dur externe de défectueux. Je me suis alors rendu à l&amp;rsquo;évidance qu&amp;rsquo;il falait que je trouve une nouvelle façon d&amp;rsquo;effectuer mes backups. Après plusieurs recherche j&amp;rsquo;ai finalement trouvé une stratégie de backup qui me convient parfaitement. Cette solution est restic parce quel correspondait à tout les critères que je m&amp;rsquo;étais donnés.</description>
     </item>
     
     <item>
       <title>Résolution 2021</title>
-      <link>https://astate.github.io/post/resolution-2021/</link>
+      <link>http://localhost:1313/post/resolution-2021/</link>
       <pubDate>Tue, 05 Jan 2021 13:00:26 -0500</pubDate>
       <author>astate@protonmail.com (Astate)</author>
-      <guid>https://astate.github.io/post/resolution-2021/</guid>
+      <guid>http://localhost:1313/post/resolution-2021/</guid>
       <description>Malgré tout j&amp;rsquo;ai quand même eux une bonne année 2020. La principale raison est que j&amp;rsquo;ai eu la chance de pouvoir continuer de travailler en télétravail. Je crois qu&amp;rsquo;il est possible d&amp;rsquo;être plus parfait qu&amp;rsquo;on l&amp;rsquo;était l&amp;rsquo;année précédente. Ma résolution de l&amp;rsquo;année 2021 est de plus documentée, que ce soit mes documentations de travail, pour ma gestion du temps, ou pour organiser toutes l&amp;rsquo;information que je possède il faut que cela soit écrit quelque part.</description>
     </item>
     
