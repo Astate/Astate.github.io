@@ -1,0 +1,124 @@
+#!/bin/sh
+set -e
+
+# --- CONFIGURATION ---
+DISK="/dev/sda"
+ROOT_PART="${DISK}2"
+EFI_PART="${DISK}1"
+HOSTNAME="chimera-vm"
+USER_NAME="user"
+USER_PASS="chimera"
+
+echo "=================================================="
+echo " INSTALLATION CHIMERA (BASE-FULL + WAYLAND)       "
+echo "=================================================="
+
+# 1. NETTOYAGE
+echo "[1/6] Nettoyage du disque..."
+umount -R /media/root 2>/dev/null || true
+swapoff -a 2>/dev/null || true
+wipefs -a $DISK
+
+# 2. PARTITIONNEMENT
+echo "[2/6] Partitionnement..."
+sfdisk $DISK <<EOF
+label: gpt
+,512M,U
+,,L
+EOF
+
+mkfs.vfat -F32 -n "EFI" $EFI_PART
+mkfs.xfs -f -L "ROOT" $ROOT_PART
+
+# 3. MONTAGE
+echo "[3/6] Montage..."
+mkdir -p /media/root
+mount $ROOT_PART /media/root
+mkdir -p /media/root/boot/efi
+mount $EFI_PART /media/root/boot/efi
+
+# 4. BOOTSTRAP
+echo "[4/6] Bootstrap (Base système)..."
+chimera-bootstrap /media/root
+
+# 5. FSTAB
+genfstab /media/root > /media/root/etc/fstab
+
+# 6. CONFIGURATION
+echo "[5/6] Installation et configuration..."
+TARGET_UUID=$(blkid -s UUID -o value $ROOT_PART)
+
+cat <<EOF > /media/root/install_internal.sh
+#!/bin/sh
+set -e
+
+echo "   -> [CHROOT] Mise à jour..."
+apk update
+
+echo "   -> [CHROOT] Installation Base..."
+# On garde base-full pour la sécurité matériell
+apk add base-full linux-stable limine
+
+
+# 2. Installer interface 
+apk add chimera-repo-user
+apk add niri
+
+echo "   -> [CHROOT] Utilisateur..."
+useradd -m -G wheel,kvm $USER_NAME
+echo "$USER_NAME:$USER_PASS" | chpasswd
+echo "root:$USER_PASS" | chpasswd
+
+echo "   -> [CHROOT] Configuration de l'environnement Wayland..."
+# On force certaines variables pour que les applis choisissent Wayland
+cat <<ENV > /etc/environment
+# Firefox en mode Wayland natif
+MOZ_ENABLE_WAYLAND=1
+# Qt en mode Wayland (fallback sur xcb si échec)
+QT_QPA_PLATFORM=wayland;xcb
+# Pour que les applis SDL (jeux) utilisent Wayland
+SDL_VIDEODRIVER=wayland
+ENV
+
+echo "   -> [CHROOT] Services..."
+mkdir -p /etc/dinit.d/boot.d
+ln -sf /usr/lib/dinit.d/sddm /etc/dinit.d/boot.d/
+ln -sf /usr/lib/dinit.d/NetworkManager /etc/dinit.d/boot.d/
+ln -sf /usr/lib/dinit.d/syslog-ng /etc/dinit.d/boot.d/
+
+echo "   -> [CHROOT] Bootloader..."
+update-initramfs -c -k all
+mkdir -p /boot/efi/EFI/BOOT
+cp /usr/share/limine/BOOTX64.EFI /boot/efi/EFI/BOOT/BOOTX64.EFI
+
+# Copie Kernel FAT32
+cd /boot
+KERNEL_FILE=\$(ls vmlinuz* | head -n 1)
+INITRD_FILE=\$(ls initramfs* initrd* 2>/dev/null | head -n 1)
+cp \$KERNEL_FILE /boot/efi/
+cp \$INITRD_FILE /boot/efi/
+
+cat <<LIMINE_CONF > /boot/efi/limine.conf
+timeout: 3
+/Chimera Linux (Wayland Ready)
+    protocol: linux
+    kernel_path: boot():/\$KERNEL_FILE
+    module_path: boot():/\$INITRD_FILE
+    cmdline: root=UUID=$TARGET_UUID rw quiet
+LIMINE_CONF
+
+echo "$HOSTNAME" > /etc/hostname
+ln -sf /usr/share/zoneinfo/America/Montreal /etc/localtime
+rm /install_internal.sh
+exit
+EOF
+
+chmod +x /media/root/install_internal.sh
+
+# 7. EXÉCUTION
+chimera-chroot /media/root /install_internal.sh
+
+echo "=================================================="
+echo " INSTALLATION NIRI TERMINÉE."
+echo "=================================================="
+# reboot
