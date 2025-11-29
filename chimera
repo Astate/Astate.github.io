@@ -66,8 +66,17 @@ apk add niri
 
 echo "   -> [CHROOT] Utilisateur..."
 useradd -m -G wheel,kvm $USER_NAME
-echo "$USER_NAME:$USER_PASS" | chpasswd
-echo "root:$USER_PASS" | chpasswd
+#echo "$USER_NAME:$USER_PASS" | chpasswd
+#echo "root:$USER_PASS" | chpasswd
+
+
+# LA CORRECTION EST ICI : ajout de "-c SHA512"
+# Sans cela, le mot de passe est corrompu ou illisible pour le système
+echo "${USER_NAME}:${USER_PASS}" | chpasswd -c SHA512
+echo "root:${USER_PASS}" | chpasswd -c SHA512
+
+# On déverrouille le compte pour être sûr
+usermod -U $USER_NAME
 
 echo "   -> [CHROOT] Configuration de l'environnement Wayland..."
 # On force certaines variables pour que les applis choisissent Wayland
